@@ -19,7 +19,6 @@
 				"header"
 				"menu"
 				"content"
-				"keyword"
 				"footer";
 			background-color: white;
 			gap: 10px;
@@ -27,9 +26,11 @@
 
 		.header {
 			grid-area: header;
-			background-color: purple;
+			background-color: #0099cc;
+			border-radius: 8px;
 			text-align: center;
 			color: #ffffff;
+			margin-bottom: 10px;
 		}
 
 		.header > h1 {
@@ -50,6 +51,7 @@
 			padding: 8px;
 			margin-bottom: 7px;
 			background-color: #33b5e5;
+			border-radius: 8px;
 			color: #ffffff;
 		}
 
@@ -67,18 +69,13 @@
 			margin-bottom: 7px;
 		}
 
-		.keyword {
-			grid-area: keyword;
-			border: 1px solid #0099cc;
-			background-color: beige;
-			padding: 10px;
-		}
-
 		.footer {
 			grid-area: footer;
 			background-color: #0099cc;
 			color: #ffffff;
 			text-align: center;
+			border-radius: 8px;
+			margin-top: 10px;
 		}
 
 		@media (min-width: 600px) {
@@ -91,11 +88,8 @@
 			#content {
 				grid-area: 2 / span 4;
 			}
-			.keyword {
-				grid-area: 3 / span 6;
-			}
 			.footer {
-				grid-area: 4 / span 6;
+				grid-area: 3 / span 6;
 			}
 		}
 
@@ -107,10 +101,7 @@
 				grid-area: 2 / span 1;
 			}
 			#content {
-				grid-area: 2 / span 4;
-			}
-			.keyword {
-				grid-area: 2 / span 1;
+				grid-area: 2 / span 5;
 			}
 			.footer {
 				grid-area: 3 / span 6;
@@ -141,7 +132,9 @@
 			<div class="menu">
 				<ul>
 					<li onclick="loadContent('tentang.html')">Tentang</li>
-					<li>Review Buku</li>
+					<li onclick="loadContent('review_buku.html')">
+						Review Buku
+					</li>
 					<li>Ngobrol Matematika</li>
 					<li>Imajinasi</li>
 				</ul>
@@ -158,9 +151,6 @@
 					investasi, dan lainnya. Cocok sekali bagi Gen Z yang merasa
 					sulit sekali menjaga rekeningnya tetap gemuk.
 				</p>
-			</div>
-			<div class="keyword">
-				<h2>Keywords:</h2>
 			</div>
 			<div class="footer">
 				<p>Copyright @2026</p>

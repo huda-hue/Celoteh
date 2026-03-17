@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Celoteh.com</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: "Lucida Sans", sans-serif;
+		}
+
+		.grid-container {
+			display: grid;
+			grid-template-areas:
+				"header"
+				"menu"
+				"content"
+				"keyword"
+				"footer";
+			background-color: white;
+			gap: 10px;
+		}
+
+		.header {
+			grid-area: header;
+			background-color: purple;
+			text-align: center;
+			color: #ffffff;
+		}
+
+		.header > h1 {
+			font-size: 40px;
+		}
+
+		.menu {
+			grid-area: menu;
+		}
+
+		.menu ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.menu li {
+			padding: 8px;
+			margin-bottom: 7px;
+			background-color: #33b5e5;
+			color: #ffffff;
+		}
+
+		.menu li:hover {
+			background-color: #0099cc;
+		}
+
+		#content {
+			grid-area: content;
+		}
+
+		#content > h1,
+		#content > h5,
+		#content > p {
+			margin-bottom: 7px;
+		}
+
+		.keyword {
+			grid-area: keyword;
+			border: 1px solid #0099cc;
+			background-color: beige;
+			padding: 10px;
+		}
+
+		.footer {
+			grid-area: footer;
+			background-color: #0099cc;
+			color: #ffffff;
+			text-align: center;
+		}
+
+		@media (min-width: 600px) {
+			.header {
+				grid-area: 1 / span 6;
+			}
+			.menu {
+				grid-area: 2 / span 1;
+			}
+			#content {
+				grid-area: 2 / span 4;
+			}
+			.keyword {
+				grid-area: 3 / span 6;
+			}
+			.footer {
+				grid-area: 4 / span 6;
+			}
+		}
+
+		@media (min-width: 768px) {
+			.header {
+				grid-area: 1 / span 6;
+			}
+			.menu {
+				grid-area: 2 / span 1;
+			}
+			#content {
+				grid-area: 2 / span 4;
+			}
+			.keyword {
+				grid-area: 2 / span 1;
+			}
+			.footer {
+				grid-area: 3 / span 6;
+			}
+		}
+	</style>
+	<script>
+		function loadContent(file) {
+			let content = document.getElementById("content");
+			content.innerHTML = "<p>Loading...</p>";
+			fetch(file)
+				.then((response) => response.text())
+				.then((data) => {
+					document.getElementById("content").innerHTML = data;
+				})
+				.catch((error) => {
+					document.getElementById("content").innerHTML =
+						"<p>Konten gagal dimuat.</p>";
+					console.error(error);
+				});
+		}
+	</script>
+	<body>
+		<div class="grid-container">
+			<div class="header">
+				<h1>Celoteh</h1>
+			</div>
+			<div class="menu">
+				<ul>
+					<li onclick="loadContent('tentang.html')">Tentang</li>
+					<li>Review Buku</li>
+					<li>Ngobrol Matematika</li>
+					<li>Imajinasi</li>
+				</ul>
+			</div>
+			<div id="content">
+				<h1>The Psychology of Money</h1>
+				<h5>Posted: 17 Mar 2026</h5>
+				<p>
+					Buku karya Morgan Housel ini terbit pada saat COVID-19
+					sedang berjaya merambah bumi ini, yaitu tahun 2020. Aku
+					membelinya lima tahun kemudian, sangat terlambat memang
+					hehe. Ini buku keren sekali karena mengerjakan banyak hal
+					tentang bagaimana cara kita menyikapi uang, kekayaan,
+					investasi, dan lainnya. Cocok sekali bagi Gen Z yang merasa
+					sulit sekali menjaga rekeningnya tetap gemuk.
+				</p>
+			</div>
+			<div class="keyword">
+				<h2>Keywords:</h2>
+			</div>
+			<div class="footer">
+				<p>Copyright @2026</p>
+			</div>
+		</div>
+	</body>
+</html>

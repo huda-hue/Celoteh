@@ -119,14 +119,23 @@
 			fetch(file)
 				.then((response) => response.text())
 				.then((data) => {
-					document.getElementById("content").innerHTML = data;
+					content.innerHTML = data;
+					// Simpan page terakhir yang dibuka
+					localStorage.setItem("lastPage", file);
 				})
 				.catch((error) => {
-					document.getElementById("content").innerHTML =
-						"<p>Konten gagal dimuat.</p>";
+					content.innerHTML = "<p>Konten gagal dimuat.</p>";
 					console.error(error);
 				});
 		}
+
+		// Saat halaman direfresh, cek apakah ada page terakhir
+		document.addEventListener("DOMContentLoaded", () => {
+			const lastPage = localStorage.getItem("lastPage");
+			if (lastPage) {
+				loadContent(lastPage);
+			}
+		});
 	</script>
 	<body>
 		<div class="grid-container">
